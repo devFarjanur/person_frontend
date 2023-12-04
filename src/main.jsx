@@ -8,12 +8,17 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Teacher from './Components/Pages/Teacher';
+import Student from './Components/Pages/Student';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/addTeacher",
     element: <Teacher></Teacher>,
   },
+  {
+    path: "/addStudent",
+    element: <Student></Student>,
+  }
 ]);
 
 

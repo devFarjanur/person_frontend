@@ -9,30 +9,24 @@ const Teacher = () => {
         const id = form.id.value;
         const name = form.name.value;
 
-        const teacherCollection = { id, name };
+        const addTeacher = { id, name };
 
-        console.log(teacherCollection);
-
-
+        console.log(addTeacher);
 
 
-
-        // send data to the server ]
+        // send data to the server 
 
         fetch('http://localhost:5000/teacher', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type' : 'application/json'
             },
-            body: JSON.stringify(teacherCollection)
+            body: JSON.stringify(addTeacher)
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log('send teacher data to server successfully', data);
-            })
-            .catch(err => {
-                console.error('failed sending teacher data:', err);
-            });
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
 
     }
 
