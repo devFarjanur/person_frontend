@@ -1,6 +1,6 @@
+import Swal from 'sweetalert2'
 
-
-const Student = () => {
+const AddStudent = () => {
 
 
     const handleAddStudent = event => {
@@ -17,7 +17,7 @@ const Student = () => {
 
         // send data to the server 
 
-        fetch('http://localhost:5000/student', {
+        fetch('http://localhost:/student', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -27,6 +27,23 @@ const Student = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'student added successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+                else {
+                    console.log(data);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Try again!',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    })
+                }
             })
 
     }
@@ -61,4 +78,4 @@ const Student = () => {
     );
 };
 
-export default Student;
+export default AddStudent;

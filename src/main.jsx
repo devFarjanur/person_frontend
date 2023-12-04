@@ -7,17 +7,38 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Teacher from './Components/Pages/Teacher';
-import Student from './Components/Pages/Student';
+import AddTeacher from './Components/Pages/AddTeacher';
+import AddStudent from './Components/Pages/AddStudent';
+import Main from './Components/Pages/main';
+import Teachers from './Components/Pages/Teachers';
+import Students from './Components/Pages/Students';
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <Main></Main>,
+  },
+  {
+    path: '/student',
+    element: <Students></Students>,
+    loader: () => fetch('http://localhost:5000/student')
+  },
+  {
+    path: '/teacher',
+    element: <Teachers></Teachers>,
+    loader: () => fetch('http://localhost:5000/teacher')
+  },
+  {
+    path: "/teacher",
+    element: <Teachers></Teachers>,
+  },
+  {
     path: "/addTeacher",
-    element: <Teacher></Teacher>,
+    element: <AddTeacher></AddTeacher>,
   },
   {
     path: "/addStudent",
-    element: <Student></Student>,
+    element: <AddStudent></AddStudent>,
   }
 ]);
 

@@ -1,5 +1,5 @@
 
-const Teacher = () => {
+const AddTeacher = () => {
 
 
     const handleAddTeacher = event => {
@@ -62,4 +62,4 @@ const Teacher = () => {
     );
 };
 
-export default Teacher;
+export default AddTeacher;
