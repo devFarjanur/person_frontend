@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 
 const AddTeacher = () => {
 
@@ -6,10 +8,12 @@ const AddTeacher = () => {
         event.preventDefault();
 
         const form = event.target;
-        const id = form.id.value;
+     
         const name = form.name.value;
+        const address = form.address.value;
 
-        const addTeacher = { id, name };
+
+        const addTeacher = { name, address };
 
         console.log(addTeacher);
 
@@ -19,16 +23,32 @@ const AddTeacher = () => {
         fetch('http://localhost:5000/teacher', {
             method: 'POST',
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(addTeacher)
         })
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            if (data.insertedId) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'student added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+                 // Delay for 2 seconds before reloading the website
+                 setTimeout(() => {
+                    window.location.reload();
+                }, 4000); // Adjust the delay time as needed
+                
+            }
+            
+            
         })
-
+       
     }
+   
 
 
 
@@ -40,17 +60,18 @@ const AddTeacher = () => {
                         <form className="card-body" onSubmit={handleAddTeacher}>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Teacher ID</span>
-                                </label>
-                                <input type="text" name="id" placeholder="Teacher ID" className="input input-bordered text-white" required />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
                                     <span className="label-text">Teacher Name</span>
                                 </label>
                                 <input type="text" name="name" placeholder="Teacher Name" className="input input-bordered text-white" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Teacher Address</span>
+                                </label>
+                                <input type="text" name="address" placeholder="Teacher Address" className="input input-bordered text-white" required />
 
                             </div>
+
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Submit</button>
                             </div>

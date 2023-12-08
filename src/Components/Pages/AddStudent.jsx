@@ -7,17 +7,18 @@ const AddStudent = () => {
         event.preventDefault();
 
         const form = event.target;
-        const id = form.id.value;
-        const name = form.name.value;
 
-        const addStudent = { id, name };
+        const name = form.name.value;
+        const address = form.address.value;
+
+        const addStudent = { name, address };
 
         console.log(addStudent);
 
 
         // send data to the server 
 
-        fetch('http://localhost:/student', {
+        fetch('http://localhost:5000/student', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -34,16 +35,12 @@ const AddStudent = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                 // Delay for 2 seconds before reloading the website
+                 setTimeout(() => {
+                    window.location.reload();
+                }, 4000); // Adjust the delay time as needed
                 }
-                else {
-                    console.log(data);
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Try again!',
-                        icon: 'error',
-                        confirmButtonText: 'Cool'
-                    })
-                }
+                
             })
 
     }
@@ -58,13 +55,13 @@ const AddStudent = () => {
                                 <label className="label">
                                     <span className="label-text">Student ID</span>
                                 </label>
-                                <input type="text" name="id" placeholder="Student ID" className="input input-bordered text-white" required />
+                                <input type="text" name="name" placeholder="Student Name" className="input input-bordered text-white" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Student Name</span>
                                 </label>
-                                <input type="text" name="name" placeholder="Student Name" className="input input-bordered text-white" required />
+                                <input type="text" name="address" placeholder="Student Address" className="input input-bordered text-white" required />
 
                             </div>
                             <div className="form-control mt-6">

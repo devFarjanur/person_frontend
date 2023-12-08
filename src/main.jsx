@@ -12,6 +12,7 @@ import AddStudent from './Components/Pages/AddStudent';
 import Main from './Components/Pages/main';
 import Teachers from './Components/Pages/Teachers';
 import Students from './Components/Pages/Students';
+import UpdateTeacher from './Components/Pages/UpdateTeacher';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
     path: '/teacher',
     element: <Teachers></Teachers>,
     loader: () => fetch('http://localhost:5000/teacher')
+  },
+  {
+    path: '/teacher/updateTeacher/:id',
+    element: <UpdateTeacher></UpdateTeacher>,
+    loader: ({params}) => fetch(`http://localhost:5000/teacher/${params.id}`)
   },
   {
     path: "/teacher",
