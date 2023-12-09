@@ -33,7 +33,7 @@ const AddTeacher = () => {
             if (data.insertedId) {
                 Swal.fire({
                     title: 'Success!',
-                    text: 'student added successfully',
+                    text: 'Teacher added successfully',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })

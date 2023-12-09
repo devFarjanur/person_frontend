@@ -13,6 +13,7 @@ import Main from './Components/Pages/main';
 import Teachers from './Components/Pages/Teachers';
 import Students from './Components/Pages/Students';
 import UpdateTeacher from './Components/Pages/UpdateTeacher';
+import UpdateStudent from './Components/Pages/UpdateStudent';
 
 const router = createBrowserRouter([
   {
@@ -20,14 +21,13 @@ const router = createBrowserRouter([
     element: <Main></Main>,
   },
   {
-    path: '/student',
-    element: <Students></Students>,
-    loader: () => fetch('http://localhost:5000/student')
+    path: "/addTeacher",
+    element: <AddTeacher></AddTeacher>,
   },
   {
     path: '/teacher',
     element: <Teachers></Teachers>,
-    loader: () => fetch('http://localhost:5000/teacher')
+    loader: () => fetch(`http://localhost:5000/teacher`)
   },
   {
     path: '/teacher/updateTeacher/:id',
@@ -35,16 +35,18 @@ const router = createBrowserRouter([
     loader: ({params}) => fetch(`http://localhost:5000/teacher/${params.id}`)
   },
   {
-    path: "/teacher",
-    element: <Teachers></Teachers>,
-  },
-  {
-    path: "/addTeacher",
-    element: <AddTeacher></AddTeacher>,
-  },
-  {
     path: "/addStudent",
     element: <AddStudent></AddStudent>,
+  },
+  {
+    path: '/student',
+    element: <Students></Students>,
+    loader: () => fetch('http://localhost:5000/student')
+  },
+  {
+    path: '/student/updateStudent/:id',
+    element: <UpdateStudent></UpdateStudent>,
+    loader: ({params}) => fetch(`http://localhost:5000/student/${params.id}`)
   }
 ]);
 

@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Student = ({ student }) => {
@@ -51,6 +51,12 @@ const Student = ({ student }) => {
                     <p>{address}</p>
 
                     <div className="card-actions justify-end">
+                        <Link to={`/student/updateStudent/${_id}`}>
+                            <button
+                                className="btn btn-primary">Edit
+                            </button>
+                        </Link>
+
                         <button
                             onClick={() => handleDelete(_id)}
                             className="btn btn-primary">Delete
